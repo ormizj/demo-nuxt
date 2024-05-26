@@ -1,4 +1,7 @@
 <script setup>
+import Parent from './components/slot-child-child/Parent.vue';
+
+
 // once the "useState" is executed, it will be globally available
 const globalState = useState('globalState', () => 'is globally available');
 const globalStateIndex = useState('globalStateIndex');
@@ -37,7 +40,7 @@ const handleExternalReq = async () => {
 
 const handleThrowFatalError = () => {
   // if error occurs on server side (can be checked with "process.server"), it will ALWAYS be fatal (stops execution)
-  throw createError({statusCode: 500, statusMessage: 'Manual Crash', fatal: true});
+  throw createError({ statusCode: 500, statusMessage: 'Manual Crash', fatal: true });
 };
 
 </script>
@@ -48,8 +51,8 @@ const handleThrowFatalError = () => {
         <template #fallback>
           LOADING...
         </template>
-        ...
-    -->
+...
+-->
 
   <div>
     1
@@ -80,7 +83,7 @@ const handleThrowFatalError = () => {
     <hr>
 
     3
-    <NotPage/>
+    <NotPage />
     <hr>
 
     4
@@ -98,8 +101,8 @@ const handleThrowFatalError = () => {
 
     5
     <!--  NuxtLoadingIndicator is used to "Display a progress bar between page navigations"  -->
-    <NuxtLoadingIndicator/>
-    <NuxtPage/>
+    <NuxtLoadingIndicator />
+    <NuxtPage />
     <hr>
 
     6
@@ -112,6 +115,11 @@ const handleThrowFatalError = () => {
     7
     <br>
     <button @click="handleThrowFatalError">Throw Fatal Error</button>
+    <hr>
+
+    8
+    <br>
+    <Parent />
   </div>
 </template>
 
@@ -142,5 +150,4 @@ body {
 hr {
   margin-top: 2rem;
 }
-
 </style>
